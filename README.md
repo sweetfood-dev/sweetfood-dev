@@ -4,7 +4,7 @@
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=sweetfood-dev)](https://github.com/anuraghazra/github-readme-stats)
 
-### 관심사 & 기술 스택 💻
+### 관심 💻
 <img src="https://img.shields.io/badge/Football-326295?style=flat-square&logo=FIFA&logoColor=white"/> <img src="https://img.shields.io/badge/ios-000000?style=flat-square&logo=Apple&logoColor=white"/> <img src="https://img.shields.io/badge/Swift-FA7343?style=flat-square&logo=Swift&logoColor=white"/> <img src="https://img.shields.io/badge/Combine-CC0000?style=flat-square&logo=Swift&logoColor=white"/> <img src="https://img.shields.io/badge/SwiftUI-137CBD?style=flat-square&logo=Swift&logoColor=white"/> <img src="https://img.shields.io/badge/Xcode-147EFB?style=flat-square&logo=Xcode&logoColor=white"/>
 
 ### 👨‍💻
