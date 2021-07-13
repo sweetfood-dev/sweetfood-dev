@@ -4,13 +4,13 @@
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=sweetfood-dev)](https://github.com/anuraghazra/github-readme-stats)
 
-### :black_joker:
+### :black_joker: was
 <img src="https://img.shields.io/badge/Unity-000000?style=flat-square&logo=Unity&logoColor=white"/> <img src="https://img.shields.io/badge/C Sharp-239120?style=flat-square&logo=CSharp&logoColor=white"/>
-### 💻
+### 💻 is -ing
 <img src="https://img.shields.io/badge/iOS-000000?style=flat-square&logo=Apple&logoColor=white"/> <img src="https://img.shields.io/badge/Swift-FA7343?style=flat-square&logo=Swift&logoColor=white"/> <img src="https://img.shields.io/badge/Combine-CC0000?style=flat-square&logo=Swift&logoColor=white"/> <img src="https://img.shields.io/badge/SwiftUI-137CBD?style=flat-square&logo=Swift&logoColor=white"/> <img src="https://img.shields.io/badge/Xcode-147EFB?style=flat-square&logo=Xcode&logoColor=white"/> <img src="https://img.shields.io/badge/Bluetooth-0082FC?style=flat-square&logo=Bluetooth&logoColor=white"/>
 <br>
 
-### 👨‍💻
+### 👨‍💻 I am
 [![Tech Blog Badge](http://img.shields.io/badge/-Tech%20blog-black?style=flat-square&logo=github&link=https://sweetfood-dev.github.io/)](https://sweetfood-dev.github.io/)
 [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/지수-권-496594202/)](https://www.linkedin.com/in/지수-권-496594202/) 
 [![Instagram Badge](https://img.shields.io/badge/-Instagram-dd2a7b?style=flat-square&logo=instagram&logoColor=white&link=https://www.instagram.com/kjisooooooo/)](https://www.instagram.com/kjisooooooo/) 
