@@ -1,0 +1,59 @@
+name: Update Profile Stats Cards
+
+on:
+  schedule:
+    - cron: "17 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-cards:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate GH_STATS_TOKEN
+        run: |
+          if [ -z "${{ secrets.GH_STATS_TOKEN }}" ]; then
+            echo "::error::Repository secret GH_STATS_TOKEN is required. Create a PAT with repo and read:user scopes, then authorize SSO for todoc-dev if required."
+            exit 1
+          fi
+
+      - name: Compute last year
+        id: year
+        run: |
+          current_year=$(date -u +%Y)
+          echo "value=$((current_year - 1))" >> "$GITHUB_OUTPUT"
+
+      - name: Generate all-time stats card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: stats
+          path: profile/stats-all.svg
+          options: username=sweetfood-dev&show_icons=true&include_all_commits=true&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff
+          token: ${{ secrets.GH_STATS_TOKEN }}
+
+      - name: Generate last-year commits card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: stats
+          path: profile/commits-last-year.svg
+          options: username=sweetfood-dev&show_icons=true&commits_year=${{ steps.year.outputs.value }}&hide=stars,prs,issues,contribs&hide_rank=true&custom_title=Total%20Commits%20(Last%20Year)&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff
+          token: ${{ secrets.GH_STATS_TOKEN }}
+
+      - name: Commit and push cards
+        run: |
+          git add profile/*.svg
+
+          if git diff --cached --quiet; then
+            echo "No card changes"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: update profile stats cards"
+          git push
