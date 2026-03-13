@@ -3,6 +3,7 @@
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=sweetfood-dev&show_icons=true&include_all_commits=true&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff)](https://github.com/anuraghazra/github-readme-stats)
 [![Total commits (2025)](https://github-readme-stats.vercel.app/api?username=sweetfood-dev&show_icons=true&commits_year=2025&hide=stars,prs,issues,contribs&hide_rank=true&custom_title=Total%20Commits%20(2025)&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff)](https://github.com/anuraghazra/github-readme-stats)
+[![WakaTime stats](https://github-readme-stats.vercel.app/api/wakatime?username=sweetfood-dev&layout=compact&custom_title=WakaTime%20Stats%20(Last%207%20Days)&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff)](https://github.com/anuraghazra/github-readme-stats)
 
 ### :black_joker: was
 <img src="https://img.shields.io/badge/Unity-000000?style=flat-square&logo=Unity&logoColor=white"/> <img src="https://img.shields.io/badge/C Sharp-239120?style=flat-square&logo=CSharp&logoColor=white"/>
