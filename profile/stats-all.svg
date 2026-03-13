@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="495" height="195" role="img" aria-label="Profile Stats">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e96443"/>
+      <stop offset="100%" stop-color="#904e95"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="10" ry="10" fill="url(#g)"/>
+  <text x="20" y="44" fill="#ffffff" font-size="22" font-family="Arial, sans-serif" font-weight="700">GitHub Stats</text>
+  <text x="20" y="86" fill="#ffffff" font-size="14" font-family="Arial, sans-serif">Private-inclusive card is being prepared.</text>
+  <text x="20" y="112" fill="#ffffff" font-size="14" font-family="Arial, sans-serif">1) Set repository secret: GH_STATS_TOKEN</text>
+  <text x="20" y="138" fill="#ffffff" font-size="14" font-family="Arial, sans-serif">2) Run workflow: Update Profile Stats Cards</text>
+</svg>
