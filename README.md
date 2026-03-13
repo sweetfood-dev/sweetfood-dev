@@ -1,4 +1,4 @@
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsweetfood-dev&count_bg=%23137CBD&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+[![Hits](https://hits.sh/github.com/sweetfood-dev/sweetfood-dev.svg?style=flat-square&label=hits&color=137CBD&labelColor=555555)](https://hits.sh/github.com/sweetfood-dev/sweetfood-dev/)
 ### 개발자가 되고 싶은 개발자
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=sweetfood-dev&show_icons=true&include_all_commits=true&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff)](https://github.com/anuraghazra/github-readme-stats)
