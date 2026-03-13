@@ -1,8 +1,8 @@
 [![Hits](https://hits.sh/github.com/sweetfood-dev/sweetfood-dev.svg?style=flat-square&label=hits&color=137CBD&labelColor=555555)](https://hits.sh/github.com/sweetfood-dev/sweetfood-dev/)
 ### 개발자가 되고 싶은 개발자
 
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=sweetfood-dev&show_icons=true&include_all_commits=true&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff)](https://github.com/anuraghazra/github-readme-stats)
-[![Total commits (2025)](https://github-readme-stats.vercel.app/api?username=sweetfood-dev&show_icons=true&commits_year=2025&hide=stars,prs,issues,contribs&hide_rank=true&custom_title=Total%20Commits%20(2025)&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff)](https://github.com/anuraghazra/github-readme-stats)
+![GitHub Stats](./profile/stats-all.svg)
+![Total Commits (Last Year)](./profile/commits-last-year.svg)
 
 ### :black_joker: was
 <img src="https://img.shields.io/badge/Unity-000000?style=flat-square&logo=Unity&logoColor=white"/> <img src="https://img.shields.io/badge/C Sharp-239120?style=flat-square&logo=CSharp&logoColor=white"/>
