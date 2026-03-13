@@ -22,26 +22,27 @@ jobs:
             exit 1
           fi
 
-      - name: Compute last year
+      - name: Compute year values
         id: year
         run: |
           current_year=$(date -u +%Y)
-          echo "value=$((current_year - 1))" >> "$GITHUB_OUTPUT"
+          echo "current=$current_year" >> "$GITHUB_OUTPUT"
+          echo "last=$((current_year - 1))" >> "$GITHUB_OUTPUT"
 
-      - name: Generate all-time stats card
+      - name: Generate this-year stats card
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
           path: profile/stats-all.svg
-          options: username=sweetfood-dev&show_icons=true&include_all_commits=true&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff
+          options: username=sweetfood-dev&show_icons=true&commits_year=${{ steps.year.outputs.current }}&custom_title=GitHub%20Stats%20(This%20Year)&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff
           token: ${{ secrets.GH_STATS_TOKEN }}
 
-      - name: Generate last-year commits card
+      - name: Generate last-year commits and contrib card
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
           path: profile/commits-last-year.svg
-          options: username=sweetfood-dev&show_icons=true&commits_year=${{ steps.year.outputs.value }}&hide=stars,prs,issues,contribs&hide_rank=true&custom_title=Total%20Commits%20(Last%20Year)&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff
+          options: username=sweetfood-dev&show_icons=true&commits_year=${{ steps.year.outputs.last }}&hide=stars,prs,issues&hide_rank=true&custom_title=Last%20Year%20Stats&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff
           token: ${{ secrets.GH_STATS_TOKEN }}
 
       - name: Commit and push cards
