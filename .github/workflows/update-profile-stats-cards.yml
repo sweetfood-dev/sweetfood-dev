@@ -37,6 +37,97 @@ jobs:
           options: username=sweetfood-dev&show_icons=true&commits_year=${{ steps.year.outputs.current }}&custom_title=GitHub%20Stats%20(This%20Year)&bg_color=30,e96443,904e95&title_color=ffffff&text_color=ffffff&icon_color=ffffff
           token: ${{ secrets.GH_STATS_TOKEN }}
 
+      - name: Rewrite left card contribs to this-year value
+        env:
+          GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
+          TARGET_USER: sweetfood-dev
+          YEAR: ${{ steps.year.outputs.current }}
+        run: |
+          python3 - <<'PY'
+          import datetime
+          import json
+          import pathlib
+          import re
+          import urllib.request
+
+          token = "${GH_STATS_TOKEN}"
+          user = "${TARGET_USER}"
+          year = int("${YEAR}")
+
+          start = f"{year}-01-01T00:00:00Z"
+          end = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+          query = """
+          query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+              contributionsCollection(from: $from, to: $to) {
+                commitContributionsByRepository(maxRepositories: 100) { repository { nameWithOwner } }
+                issueContributionsByRepository(maxRepositories: 100) { repository { nameWithOwner } }
+                pullRequestContributionsByRepository(maxRepositories: 100) { repository { nameWithOwner } }
+                pullRequestReviewContributionsByRepository(maxRepositories: 100) { repository { nameWithOwner } }
+              }
+            }
+          }
+          """
+
+          payload = json.dumps({
+            "query": query,
+            "variables": {"login": user, "from": start, "to": end},
+          }).encode("utf-8")
+
+          req = urllib.request.Request(
+            "https://api.github.com/graphql",
+            data=payload,
+            headers={
+              "Authorization": f"Bearer {token}",
+              "Content-Type": "application/json",
+              "Accept": "application/vnd.github+json",
+              "User-Agent": "profile-stats-workflow",
+            },
+            method="POST",
+          )
+
+          with urllib.request.urlopen(req) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+
+          if body.get("errors"):
+            raise SystemExit(f"GraphQL error: {body['errors']}")
+
+          c = body["data"]["user"]["contributionsCollection"]
+          repos = set()
+          for key in (
+            "commitContributionsByRepository",
+            "issueContributionsByRepository",
+            "pullRequestContributionsByRepository",
+            "pullRequestReviewContributionsByRepository",
+          ):
+            for item in c.get(key, []):
+              name = item.get("repository", {}).get("nameWithOwner")
+              if name:
+                repos.add(name)
+
+          contrib_count = len(repos)
+
+          svg_path = pathlib.Path("profile/stats-all.svg")
+          svg = svg_path.read_text(encoding="utf-8")
+
+          svg = svg.replace("Contributed to (last year):", "Contributed to (this year):")
+          svg = re.sub(
+            r"(data-testid=\"contribs\"\s*>)(\d+)(</text>)",
+            rf"\g<1>{contrib_count}\g<3>",
+            svg,
+            flags=re.S,
+          )
+          svg = re.sub(
+            r"Contributed to \(last year\):\s*\d+",
+            f"Contributed to (this year): {contrib_count}",
+            svg,
+          )
+
+          svg_path.write_text(svg, encoding="utf-8")
+          print(f"Updated this-year contributed repos: {contrib_count}")
+          PY
+
       - name: Generate last-year commits and contrib card
         uses: readme-tools/github-readme-stats-action@v1
         with:
