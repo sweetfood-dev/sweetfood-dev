@@ -46,13 +46,14 @@ jobs:
           python3 - <<'PY'
           import datetime
           import json
+          import os
           import pathlib
           import re
           import urllib.request
 
-          token = "${GH_STATS_TOKEN}"
-          user = "${TARGET_USER}"
-          year = int("${YEAR}")
+          token = os.environ["GH_STATS_TOKEN"]
+          user = os.environ["TARGET_USER"]
+          year = int(os.environ["YEAR"])
 
           start = f"{year}-01-01T00:00:00Z"
           end = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -70,21 +71,23 @@ jobs:
           }
           """
 
-          payload = json.dumps({
-            "query": query,
-            "variables": {"login": user, "from": start, "to": end},
-          }).encode("utf-8")
+          payload = json.dumps(
+              {
+                  "query": query,
+                  "variables": {"login": user, "from": start, "to": end},
+              }
+          ).encode("utf-8")
 
           req = urllib.request.Request(
-            "https://api.github.com/graphql",
-            data=payload,
-            headers={
-              "Authorization": f"Bearer {token}",
-              "Content-Type": "application/json",
-              "Accept": "application/vnd.github+json",
-              "User-Agent": "profile-stats-workflow",
-            },
-            method="POST",
+              "https://api.github.com/graphql",
+              data=payload,
+              headers={
+                  "Authorization": f"Bearer {token}",
+                  "Content-Type": "application/json",
+                  "Accept": "application/vnd.github+json",
+                  "User-Agent": "profile-stats-workflow",
+              },
+              method="POST",
           )
 
           with urllib.request.urlopen(req) as resp:
@@ -113,15 +116,15 @@ jobs:
 
           svg = svg.replace("Contributed to (last year):", "Contributed to (this year):")
           svg = re.sub(
-            r"(data-testid=\"contribs\"\s*>)(\d+)(</text>)",
-            rf"\g<1>{contrib_count}\g<3>",
-            svg,
-            flags=re.S,
+              r"(data-testid=\"contribs\"\s*>)(\d+)(</text>)",
+              rf"\g<1>{contrib_count}\g<3>",
+              svg,
+              flags=re.S,
           )
           svg = re.sub(
-            r"Contributed to \(last year\):\s*\d+",
-            f"Contributed to (this year): {contrib_count}",
-            svg,
+              r"Contributed to \(last year\):\s*\d+",
+              f"Contributed to (this year): {contrib_count}",
+              svg,
           )
 
           svg_path.write_text(svg, encoding="utf-8")
